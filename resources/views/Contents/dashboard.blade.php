@@ -20,40 +20,36 @@
                             <form class="user" action="{{ route('postTicket') }}" method="POST">
                                 @csrf
                                 <div class="form-group">
-                                    <label for="id" class="col-form-label">ID Ticket</label>
-                                    <input type="text" name="Id-Ticket" class="form-control" id="id" placeholder="Your ID">
+                                    <label for="name" class="col-form-label">Requestor</label>
+                                    <input type="text" name="name" class="form-control" id="requestor" placeholder="Your Name">
                                 </div>
                                 <div class="form-group">
-                                    <label for="requestor" class="col-form-label">Requestor</label>
-                                    <input type="text" name="Requestor" class="form-control" id="requestor" placeholder="Your Name">
+                                    <label for="divisi" class="col-form-label">Divisi</label>
+                                    <input type="text" name="divisi" class="form-control" id="Divisi" placeholder="Your Divisi">
                                 </div>
                                 <div class="form-group">
-                                    <label for="Divisi" class="col-form-label">Divisi</label>
-                                    <input type="text" name="Divisi" class="form-control" id="Divisi" placeholder="Your Divisi">
+                                    <label for="bisnisunit" class="col-form-label">Bisinis Unit</label>
+                                    <input type="text" name="bisnisunit" class="form-control" id="Bisinis-Unit" placeholder="Your Bisinis Unit">
                                 </div>
                                 <div class="form-group">
-                                    <label for="Bisinis-Unit" class="col-form-label">Bisinis Unit</label>
-                                    <input type="text" name="Bisnis-Unit" class="form-control" id="Bisinis-Unit" placeholder="Your Bisinis Unit">
+                                    <label for="extention" class="col-form-label">Extention</label>
+                                    <input type="text" name="extention" class="form-control" id="Extention" placeholder="Your Extention">
                                 </div>
                                 <div class="form-group">
-                                    <label for="Extention" class="col-form-label">Extention</label>
-                                    <input type="text" name="Extention" class="form-control" id="Extention" placeholder="Your Extention">
+                                    <label for="alamatip" class="col-form-label">Alamat IP</label>
+                                    <input type="text" name="alamatip" class="form-control" id="alamatip" placeholder="Your Alamat IP">
                                 </div>
                                 <div class="form-group">
-                                    <label for="Alamat-IP" class="col-form-label">Alamat IP</label>
-                                    <input type="text" name="Alamat-Ip" class="form-control" id="Alamat-IP" placeholder="Your Alamat IP">
+                                    <label for="jenis" class="col-form-label">Jenis Complain</label>
+                                    <input type="text" name="jenis" class="form-control" id="Jenis" placeholder="Your Complain">
                                 </div>
                                 <div class="form-group">
-                                    <label for="Jenis" class="col-form-label">Jenis Complain</label>
-                                    <input type="text" name="Jenis-Complain" class="form-control" id="Jenis" placeholder="Your Complain">
-                                </div>
-                                <div class="form-group">
-                                    <label for="Kategori" class="col-form-label">Kategori</label>
-                                    <input type="text" name="Kategori" class="form-control" id="Kategori" placeholder="Your Kategori">
+                                    <label for="kategori" class="col-form-label">Kategori</label>
+                                    <input type="text" name="kategori" class="form-control" id="Kategori" placeholder="Your Kategori">
                                 </div>
                                 <div class="form-group">
                                     <label for="deskripsi" class="col-form-label">Deskripsi</label>
-                                    <textarea class="form-control" id="deskripsi"></textarea>
+                                    <input type="text" name="deskripsi" class="form-control" id="deskripsi" placeholder="Deskripsi singkat">
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -190,9 +186,13 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($dtTicket as $listTicket)
                                 <tr>
                                     
+                                    
                                 </tr>
+                                    
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

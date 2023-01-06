@@ -9,5 +9,10 @@ class Ticket extends Model
 {
     use HasFactory;
 
-    protected $table = 'ticket';
+    protected $table = 'tiket';
+    protected $primaryKey = 'id';
+    protected $fillable = [
+        'name', 'divisi', 'bisnisunit', 'extention', 'alamatip', 'jenis', 'kategori', 'deskripsi'
+    ];
+
 }
