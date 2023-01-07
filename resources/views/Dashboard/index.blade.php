@@ -186,12 +186,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($dtTicket as $listTicket)
+                                @foreach ($dtTickets as $dtTicket)
                                 <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $dtTicket->name }}</td>
                                     
-                                    
-                                </tr>
-                                    
+                                </tr> 
                                 @endforeach
                             </tbody>
                         </table>

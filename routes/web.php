@@ -40,4 +40,6 @@ Route::post('/login', [LoginController::class, 'postLogin']);
 Route::post('/logout', [LoginController::class, 'postLogout'])->middleware('auth');
 
 //Ticket
-Route::post('/ticket', [TicketController::class, 'postTicket'])->name('postTicket');
+Route::resource('/dashboard/post', TicketController::class);
+Route::post('/ticket', [TicketController::class, 'store'])->name('postTicket');
+
