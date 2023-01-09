@@ -17,8 +17,9 @@ class TicketController extends Controller
         //view dtTicket
         //return Post::all();
         
-        return view('welcome', [
-            'dtTickets' => Post::all()
+        return view('Dashboard.coba', [
+            'dtTickets' => Ticket::all(),
+            //'tittle' => 'coba'
         ]);
 
     }

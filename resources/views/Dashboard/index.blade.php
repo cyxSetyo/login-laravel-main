@@ -186,13 +186,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($dtTickets as $dtTicket)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $dtTicket->name }}</td>
-                                    
-                                </tr> 
-                                @endforeach
+                                
                             </tbody>
                         </table>
                     </div>

@@ -21,7 +21,7 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content Dashboard-->
-                @include('Dashboard.index')
+                @include('Dashboard.coba')
                 <!-- /.container-fluid -->
 
             </div>

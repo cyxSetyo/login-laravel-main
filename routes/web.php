@@ -40,6 +40,8 @@ Route::post('/login', [LoginController::class, 'postLogin']);
 Route::post('/logout', [LoginController::class, 'postLogout'])->middleware('auth');
 
 //Ticket
-Route::resource('/dashboard/post', TicketController::class);
+//oute::resource('/dashboard', TicketController::class);
 Route::post('/ticket', [TicketController::class, 'store'])->name('postTicket');
 
+//coba
+Route::resource('/welcome', TicketController::class);
