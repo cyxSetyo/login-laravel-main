@@ -44,4 +44,5 @@ Route::post('/logout', [LoginController::class, 'postLogout'])->middleware('auth
 Route::post('/ticket', [TicketController::class, 'store'])->name('postTicket');
 
 //coba
-Route::resource('/welcome', TicketController::class);
+//Route::resource('/welcome', TicketController::class, );
+//Route::get('/welcome', 'TicketController@index');

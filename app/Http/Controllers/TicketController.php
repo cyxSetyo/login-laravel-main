@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Ticket;
 use Illuminate\Http\Request;
+use App\Http\Controllers;
 
 class TicketController extends Controller
 {
@@ -17,11 +18,13 @@ class TicketController extends Controller
         //view dtTicket
         //return Post::all();
         
-        return view('Dashboard.coba', [
+        return view('welcome',[
             'dtTickets' => Ticket::all(),
-            //'tittle' => 'coba'
+            
         ]);
 
+       //$users = DB::select('select * from tiket');
+       //return view('Dashboard.index',['users'=>$users]);
     }
 
     /**

@@ -34,6 +34,7 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $dtTicket->name }}</td>
+                            <td>{{ $dtTicket->divisi }}</td>
                             
                         </tr> 
                         @endforeach

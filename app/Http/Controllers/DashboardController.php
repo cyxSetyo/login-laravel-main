@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Ticket;
 
 class DashboardController extends Controller
 {
@@ -11,7 +12,8 @@ class DashboardController extends Controller
     {
             
         return view('welcome', [
-            'title' => 'Dashboard'
+            'title' => 'Dashboard',
+            'dtTickets' => Ticket::all(),
         ]);
     }
 
@@ -27,5 +29,28 @@ class DashboardController extends Controller
         return view('layouts.create', [
             'title' => 'Create Ticket'
         ]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+        Ticket::create([
+            'name' => $request->name,
+            'divisi'=> $request->divisi,
+            'bisnisunit' => $request->bisnisunit,
+            'extention' => $request->extention,
+            'alamatip' =>$request->alamatip,
+            'jenis' => $request->jenis,
+            'kategori' => $request->kategori,
+            'deskripsi' => $request->deskripsi,
+        ]);
+        
+    	return redirect('/');
     }
 }
