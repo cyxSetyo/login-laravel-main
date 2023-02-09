@@ -176,8 +176,6 @@
                                 <tr>
                                     <th scope="col">No Ticket</th>
                                     <th scope="col">Requestor</th>
-                                    <th scope="col">Divisi</th>
-                                    <th scope="col">Bisinis Unit</th>
                                     <th scope="col">Extention</th>
                                     <th scope="col">Alamat IP</th>
                                     <th scope="col">Jenis</th>
@@ -186,7 +184,20 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                
+                                <!-- Content Show Data DB -->
+                                @foreach ($dtTickets as $dtTicket)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $dtTicket->name }}</td>
+                                    <td>{{ $dtTicket->extention }}</td>
+                                    <td>{{ $dtTicket->alamatip }}</td>
+                                    <td>{{ $dtTicket->jenis }}</td>
+                                    <td>{{ $dtTicket->kategori }}</td>
+                                    <td>{{ $dtTicket->deskripsi }}</td>
+        
+                                    
+                                </tr> 
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
