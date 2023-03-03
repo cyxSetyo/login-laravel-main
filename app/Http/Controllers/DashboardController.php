@@ -5,15 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Ticket;
+use App\Models\Divisi;
+use App\Models\BisnisUnit;
 
 class DashboardController extends Controller
 {
     public function DashboardAdmin()
     {
-            
+            //
         return view('welcome', [
             'title' => 'Dashboard',
             'dtTickets' => Ticket::all(),
+            'dtDivisis' => Divisi::all(),
+            'dtBisnisUnits' => BisnisUnit::all(),
+            'dtCountTickets' => Ticket::count(),
         ]);
     }
 

@@ -23,14 +23,25 @@
                                     <label for="name" class="col-form-label">Requestor</label>
                                     <input type="text" name="name" class="form-control" id="requestor" placeholder="Your Name">
                                 </div>
-                                <div class="form-group">
-                                    <label for="divisi" class="col-form-label">Divisi</label>
-                                    <input type="text" name="divisi" class="form-control" id="Divisi" placeholder="Your Divisi">
-                                </div>
-                                <div class="form-group">
-                                    <label for="bisnisunit" class="col-form-label">Bisinis Unit</label>
-                                    <input type="text" name="bisnisunit" class="form-control" id="Bisinis-Unit" placeholder="Your Bisinis Unit">
-                                </div>
+
+                                <select name="bisnisunit" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                    <option selected>You'r Bisnis Unit</option>
+                                    @foreach ($dtBisnisUnits as $dtBisnisunit)
+                                    <option value="{{ $dtBisnisunit->bisnisunit }}">{{ $dtBisnisunit->bisnisunit }}</option>
+                                    @endforeach
+                                  </select>
+
+                                  <div class="form-group">
+                                    <select name="divisi" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                      <option selected>You'r Divisi</option>
+                                      @foreach ($dtDivisis as $dtDivisi)
+                                      <option value="{{ $dtDivisi->divisi }}">{{ $dtDivisi->divisi }}</option>
+                                      @endforeach
+                                    </select>
+                                  </div>
+
+
+
                                 <div class="form-group">
                                     <label for="extention" class="col-form-label">Extention</label>
                                     <input type="text" name="extention" class="form-control" id="Extention" placeholder="Your Extention">
@@ -39,10 +50,18 @@
                                     <label for="alamatip" class="col-form-label">Alamat IP</label>
                                     <input type="text" name="alamatip" class="form-control" id="alamatip" placeholder="Your Alamat IP">
                                 </div>
+                                
                                 <div class="form-group">
-                                    <label for="jenis" class="col-form-label">Jenis Complain</label>
-                                    <input type="text" name="jenis" class="form-control" id="Jenis" placeholder="Your Complain">
+                                    <label class="form-label select-label">Example label</label>
+                                    <select name="jenis" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                        <option selected>You'r Complain</option>
+                                        
+                                        <option value="REQUEST">REQUEST</option>
+                                        <option value="COMPLAIN">COMPLAIN</option>
+                                       
+                                    </select>
                                 </div>
+                                
                                 <div class="form-group">
                                     <label for="kategori" class="col-form-label">Kategori</label>
                                     <input type="text" name="kategori" class="form-control" id="Kategori" placeholder="Your Kategori">
@@ -73,7 +92,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Earnings (Monthly)</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $dtCountTickets }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -170,12 +189,13 @@
                 </div>
                 <!-- Card Body Isi Content-->
                 <div class="card-body">
-                    <div class="chart-area">
-                        <table class="table">
+                    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                        <table class="table table-hover table-bordered table-striped mb-0">
                             <thead>
                                 <tr>
                                     <th scope="col">No Ticket</th>
                                     <th scope="col">Requestor</th>
+                                    <th scope="col">Bisnis Unit</th>
                                     <th scope="col">Extention</th>
                                     <th scope="col">Alamat IP</th>
                                     <th scope="col">Jenis</th>
@@ -186,16 +206,15 @@
                             <tbody>
                                 <!-- Content Show Data DB -->
                                 @foreach ($dtTickets as $dtTicket)
-                                <tr>
+                                <tr data-toggle="modal">
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $dtTicket->name }}</td>
+                                    <td>{{ $dtTicket->bisnisunit }}</td>
                                     <td>{{ $dtTicket->extention }}</td>
                                     <td>{{ $dtTicket->alamatip }}</td>
                                     <td>{{ $dtTicket->jenis }}</td>
                                     <td>{{ $dtTicket->kategori }}</td>
                                     <td>{{ $dtTicket->deskripsi }}</td>
-        
-                                    
                                 </tr> 
                                 @endforeach
                             </tbody>

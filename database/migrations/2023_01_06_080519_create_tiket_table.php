@@ -16,8 +16,8 @@ class CreateTiketTable extends Migration
         Schema::create('tiket', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('divisi');
             $table->string('bisnisunit');
+            $table->string('divisi');
             $table->string('extention');
             $table->string('alamatip');
             $table->string('jenis');
