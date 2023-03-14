@@ -53,4 +53,11 @@
     e.preventDefault();
   });
 
+  //on click table
+  $('.table > tbody > tr').click(function() {
+    // row was clicked
+});
+
+
+
 })(jQuery); // End of use strict
