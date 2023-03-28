@@ -58,4 +58,31 @@ class DashboardController extends Controller
         
     	return redirect('/');
     }
+
+    public function Edit($id)
+    {
+        
+        $ticket = Ticket::Find($id);
+        //dd($ticket);
+        //$ticket->name = $request->input('name');
+
+        return view('Dashboard.edit', compact('ticket'));
+    }
+
+    public function Update(Request $request, $id)
+    {
+        $ticket = Ticket::Find($id);
+        $ticket->name = $request->input('name');
+        $ticket->Update();
+
+        return redirect('/');
+    }
+
+    public function Destroy($id)
+    {
+        $ticket = Ticket::where('id', $id)->firstorfail()->delete();
+
+        return redirect('/');
+
+    }
 }

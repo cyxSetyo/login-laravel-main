@@ -2,16 +2,11 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-
-            <button class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target=".bd-example-modal-lg" >
-                <i class="fas fa-download fa-sm text-white-50"></i> Create Ticket
-            </button>
-        
-            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Create Ticket</h5>
+                            <h5 class="modal-title" id="createTicketModal">Create Ticket</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
@@ -163,33 +158,65 @@
                     </div>
                 </div>
             </div>
+        </div>    
+    </div>
+
+    
+    <!-- ACTION MODAL Edit -->
+    <div class="modal fade" id="modalEdit" aria-labelledby="modalEdit" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalEditLabel">Update Data</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                @foreach ($dtTickets as $dataTicket)
+                <div class="modal-boddy">
+                    <div class="form-data">
+                       
+                        <label for="id">ID Anda : {{ $dataTicket->name }}</label>
+
+                    </div>
+                </div>
+                @endforeach
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondery" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save Change</button>
+                </div>
+            </div>
         </div>
-        
     </div>
 
     <!-- Content Row -->
 
     <div class="row">
-
         <!-- Area Chart -->
         <div class="col-xl-12 col-lg-7">
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
-                <div
-                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
-                    <div class="dropdown no-arrow">
-                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                        </a>
-
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Data Ticket</h6>
+                    <div>
+                        <button class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#addModal" >
+                            <i class="fas fa-download fa-sm text-white-50"></i> Create Ticket
+                        </button>
+                        <button class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#modalEdit" >
+                            <i class="fas fa-download fa-sm text-white-50"></i> Edit
+                        </button>
+                        <button class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#modalDelete" >
+                            <i class="fas fa-download fa-sm text-white-50"></i> Delete
+                        </button>
                     </div>
+
                 </div>
+
+                
                 <!-- Card Body Isi Content-->
                 <div class="card-body">
                     <div class="panel-body table-responsive">
-                        <table class="table table-bordered table-hover">
+                        <table class="table table-bordered table-hover" id="example">
                             <thead>
                                 <tr>
                                     <th scope="col">No Ticket</th>
@@ -200,12 +227,13 @@
                                     <th scope="col">Jenis</th>
                                     <th scope="col">Kategori</th>
                                     <th scope="col">Deskripsi</th>
+                                    <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <!-- Content Show Data DB -->
                                 @foreach ($dtTickets as $dtTicket)
-                                <tr>
+                                <tr class="ondblclicktable">
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $dtTicket->name }}</td>
                                     <td>{{ $dtTicket->bisnisunit }}</td>
@@ -214,11 +242,26 @@
                                     <td>{{ $dtTicket->jenis }}</td>
                                     <td>{{ $dtTicket->kategori }}</td>
                                     <td>{{ $dtTicket->deskripsi }}</td>
+                                    <td>
+                                        <a href="/edit/{{ $dtTicket->id }}" class="btn btn-warning">Edit
+                                        </a>
+                                        <a href="/delete/{{ $dtTicket->id }}" onclick="return confirm('Apakah Anda yakin akan menghapus data?')" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                       
+                                    </td>
                                 </tr> 
                                 @endforeach
                             </tbody>
                         </table>
                     </div>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                          <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                          <li class="page-item"><a class="page-link" href="#">1</a></li>
+                          <li class="page-item"><a class="page-link" href="#">2</a></li>
+                          <li class="page-item"><a class="page-link" href="#">3</a></li>
+                          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                        </ul>
+                      </nav>
                 </div>
             </div>
         </div>

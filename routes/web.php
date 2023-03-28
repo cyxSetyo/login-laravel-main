@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 //dashboard
 Route::middleware(['auth', 'isAdmin'])->group(function () {
-  Route::get('/', [DashboardController::class, 'DashboardAdmin'])->middleware('auth');
+  Route::get('/', [DashboardController::class, 'DashboardAdmin'])->name('index.dashboard')->middleware('auth');
 });
 Route::get('/WelcomeMember', [DashboardController::class, 'DashboardMember'])->middleware('auth');
 
@@ -43,6 +43,9 @@ Route::post('/logout', [LoginController::class, 'postLogout'])->middleware('auth
 //oute::resource('/dashboard', TicketController::class);
 Route::post('/ticket', [TicketController::class, 'store'])->name('postTicket');
 
-//coba
-//Route::resource('/welcome', TicketController::class, );
-//Route::get('/welcome', 'TicketController@index');
+//Update
+Route::get('/edit/{id}', [DashboardController::class, 'Edit'])->name('ticket.edit');
+Route::put('/Update/{id}', [DashboardController::class, "Update"])->name('ticket.update');
+
+//destroy
+Route::get('/delete/{id}', [DashboardController::class, 'Destroy'])->name('ticket.destroy');

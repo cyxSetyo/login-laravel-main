@@ -54,9 +54,17 @@
   });
 
   //on click table
-  $('.table > tbody > tr').click(function() {
+  $(document).ready(function(){
+    $('#example tr').click(function() {
+      var href = $(this).find("a").attr("href");
+      if(href) {
+          window.location = href;
+      }
+  });
+  });
+  //('.table > tbody > tr').click(function() {
     // row was clicked
-});
+//});s
 
 
 
