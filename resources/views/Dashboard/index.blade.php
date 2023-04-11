@@ -172,15 +172,6 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                @foreach ($dtTickets as $dataTicket)
-                <div class="modal-boddy">
-                    <div class="form-data">
-                       
-                        <label for="id">ID Anda : {{ $dataTicket->name }}</label>
-
-                    </div>
-                </div>
-                @endforeach
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondery" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Save Change</button>
@@ -232,8 +223,8 @@
                             </thead>
                             <tbody>
                                 <!-- Content Show Data DB -->
-                                @foreach ($dtTickets as $dtTicket)
-                                <tr class="ondblclicktable">
+                                @foreach ($dataTicket as $dtTicket)
+                                <tr class="">
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $dtTicket->name }}</td>
                                     <td>{{ $dtTicket->bisnisunit }}</td>

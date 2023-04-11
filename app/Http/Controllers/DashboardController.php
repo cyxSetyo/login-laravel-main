@@ -12,14 +12,18 @@ class DashboardController extends Controller
 {
     public function DashboardAdmin()
     {
-            //
+        
+        $dataTicket = Ticket::all();
+        //dd($dataTicket);
+
+
         return view('welcome', [
             'title' => 'Dashboard',
-            'dtTickets' => Ticket::all(),
+            //'dtTickets' => Ticket::all(),
             'dtDivisis' => Divisi::all(),
             'dtBisnisUnits' => BisnisUnit::all(),
             'dtCountTickets' => Ticket::count(),
-        ]);
+        ], compact('dataTicket'));
     }
 
     public function DashboardMember()
@@ -45,37 +49,33 @@ class DashboardController extends Controller
     public function store(Request $request)
     {
         //
-        Ticket::create([
-            'name' => $request->name,
-            'divisi'=> $request->divisi,
-            'bisnisunit' => $request->bisnisunit,
-            'extention' => $request->extention,
-            'alamatip' =>$request->alamatip,
-            'jenis' => $request->jenis,
-            'kategori' => $request->kategori,
-            'deskripsi' => $request->deskripsi,
-        ]);
+        Ticket::create($request->all());
         
-    	return redirect('/');
+    	return redirect('/')->with('Success, Data Berhasil Di Tambah');
     }
 
     public function Edit($id)
     {
         
-        $ticket = Ticket::Find($id);
-        //dd($ticket);
-        //$ticket->name = $request->input('name');
+        $dataTicket = Ticket::Find($id);
 
-        return view('Dashboard.edit', compact('ticket'));
+        return view('Dashboard.edit', compact('dataTicket'));
     }
 
     public function Update(Request $request, $id)
     {
-        $ticket = Ticket::Find($id);
-        $ticket->name = $request->input('name');
-        $ticket->Update();
-
-        return redirect('/');
+       try {
+           //code...
+           $ticket = Ticket::find($id);
+           $ticket->update($request->all());
+       } catch (Exception $ticket) {
+           return $ticket->getMessage();
+           
+       }
+        
+       
+       dd($ticket);
+        //return redirect()->route('index.dashboard')->with('Success, Data Berhasil Di Update');
     }
 
     public function Destroy($id)

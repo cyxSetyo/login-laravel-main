@@ -19,7 +19,7 @@ class TicketController extends Controller
         //return Post::all();
         
         return view('welcome',[
-            'dtTickets' => Ticket::all(),
+            //'dtTickets' => Ticket::all(),
             
         ]);
 
@@ -46,18 +46,6 @@ class TicketController extends Controller
     public function store(Request $request)
     {
         //
-        Ticket::create([
-            'name' => $request->name,
-            'divisi'=> $request->divisi,
-            'bisnisunit' => $request->bisnisunit,
-            'extention' => $request->extention,
-            'alamatip' =>$request->alamatip,
-            'jenis' => $request->jenis,
-            'kategori' => $request->kategori,
-            'deskripsi' => $request->deskripsi,
-        ]);
-        
-    	return redirect('/');
     }
 
     /**

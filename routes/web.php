@@ -41,11 +41,12 @@ Route::post('/logout', [LoginController::class, 'postLogout'])->middleware('auth
 
 //Ticket
 //oute::resource('/dashboard', TicketController::class);
-Route::post('/ticket', [TicketController::class, 'store'])->name('postTicket');
+Route::post('/ticket', [DashboardController::class, 'store'])->name('postTicket');
+
 
 //Update
 Route::get('/edit/{id}', [DashboardController::class, 'Edit'])->name('ticket.edit');
-Route::put('/Update/{id}', [DashboardController::class, "Update"])->name('ticket.update');
+Route::post('/Update/{id}', [DashboardController::class, "Update"])->name('ticket.update');
 
 //destroy
 Route::get('/delete/{id}', [DashboardController::class, 'Destroy'])->name('ticket.destroy');
